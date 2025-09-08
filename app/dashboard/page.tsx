@@ -60,21 +60,21 @@ export default function DashboardPage() {
       <Navbar />
       <main className="container mx-auto px-4 py-6 sm:py-8">
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-2">
             Welcome back,{" "}
             {user?.firstName ?? user?.emailAddresses[0].emailAddress}! 👋
           </h1>
           <p className="text-gray-600">
             Here's what's happening with your boards today.
           </p>
-          <Button className="w-full sm:w-auto" onClick={handleCreateBoard}>
+          <Button className="w-full sm:w-auto mt-2" onClick={handleCreateBoard}>
             <Plus className="w-4 h-4 mr-2" />
             Create Board
           </Button>
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <Card>
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
@@ -161,8 +161,8 @@ export default function DashboardPage() {
               </h2>
               <p className="text-gray-600">Manage your projects and tasks</p>
             </div>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0">
-              <div className="flex items-center space-x-2 bg-white border p-1">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-x-0 sm:space-x-2 space-y-2 sm:space-y-0">
+              <div className="flex items-center space-x-2 bg-white border p-1 rounded-md">
                 <Button
                   variant={viewMode === "grid" ? "default" : "ghost"}
                   size="sm"
@@ -180,11 +180,11 @@ export default function DashboardPage() {
                   <List />
                 </Button>
               </div>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="lg" className="py-5">
                 <Filter />
                 Filter
               </Button>
-              <Button onClick={handleCreateBoard}>
+              <Button onClick={handleCreateBoard} className="py-5">
                 <Plus />
                 Create Board
               </Button>
@@ -239,7 +239,7 @@ export default function DashboardPage() {
                 </Link>
               ))}
               <Card className="border-2 border-dashed border-gray-300 hover:border-blue-400 transition-colors cursor-pointer group">
-                <CardContent className="p-4 sm:p-6 flex flex-col items-center justify-center h-full min-h-[200px]">
+                <CardContent className="p-4 sm:p-6 flex flex-col items-center justify-center h-full min-h-[150px] box-border">
                   <Plus className="h-6 w-6 sm:h-8 sm:w-8 text-gray-400 group-hover:text-blue-600 mb-2" />
                   <p className="text-sm sm:text-base text-gray-600 font-medium group-hover:text-blue-600">
                     Create new board
