@@ -13,16 +13,16 @@ import { useSupabase } from "../supabase/SupabaseProvider";
 
 export function useBoards() {
   const { user } = useUser();
-  const { supabase } = useSupabase();
+  const { supabase, isLoaded } = useSupabase();
   const [boards, setBoards] = useState<Board[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (user) {
+    if (user && isLoaded && supabase) {
       loadBoards();
     }
-  }, [user]);
+  }, [user, isLoaded]);
 
   async function loadBoards() {
     if (!user) return;
@@ -33,6 +33,7 @@ export function useBoards() {
       const data = await boardService.getBoards(supabase!, user.id);
       setBoards(data);
     } catch (err) {
+        console.log(err);
       setError(err instanceof Error ? err.message : "Failed to load boards.");
     } finally {
       setLoading(false);
@@ -64,7 +65,7 @@ export function useBoards() {
 }
 
 export function useBoard(boardId: string) {
-  const { supabase } = useSupabase();
+  const { supabase, isLoaded } = useSupabase();
 
   const [board, setBoard] = useState<Board | null>(null);
   const [columns, setColumns] = useState<ColumnWithTasks[]>([]);
@@ -75,7 +76,7 @@ export function useBoard(boardId: string) {
     if (boardId) {
       loadBoard();
     }
-  }, [boardId]);
+  }, [boardId, isLoaded]);
 
   async function loadBoard() {
     if (!boardId) return;
