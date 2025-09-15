@@ -15,6 +15,10 @@ A modern project management tool inspired by Trello, built with Next.js, Supabas
 - **Task Management**: Add tasks with titles, descriptions, assignees, priorities, and due dates
 - **Real-time Updates**: Live synchronization of board changes across sessions
 
+### Security & Data Protection
+- **Row Level Security (RLS)**: Database-level security ensuring users can only access their own data
+- **User Isolation**: Complete data separation between different user accounts
+
 ### User Experience
 - **Modern Authentication**: Secure sign-in/sign-up with Clerk integration
 - **Responsive Design**: Beautiful UI built with Tailwind CSS and Shadcn UI components
